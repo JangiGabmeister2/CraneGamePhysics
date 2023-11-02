@@ -3,13 +3,19 @@ using UnityEngine;
 public class DragJointedObject : MonoBehaviour
 {
     [SerializeField] Camera _cam;
+    //what the player will drag in the scene AKA the knob
     Transform _selectedDragObject;
-    GameObject _dragObject;
+    //a game object which is a reference to the mouse position relative to the knob
+    GameObject _mouseRef;
+    //grabbable game objects are within this layer
     [SerializeField] LayerMask _leverLayer;
+    //the strength at which the player drags knobs
+    [SerializeField] float _jointStrength;
 
     private void Update()
     {
-        //Raycast
+        //creates a raycast from the camera to its forward direction
+        //returns transform of what's in front of camera == knob
         RaycastHit rayHit;
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out rayHit, Mathf.Infinity, _leverLayer))
         {
@@ -19,46 +25,66 @@ public class DragJointedObject : MonoBehaviour
             }
         }
 
+        //if a knob is being dragged
         if (_selectedDragObject != null)
         {
-            HingeJoint joint = _selectedDragObject.GetComponentInParent<HingeJoint>();
-            JointMotor motor = joint.motor;
-
-            //Create drag point object for reference where players mouse is pointing
-            if (_dragObject == null)
+            if (_mouseRef == null)
             {
-                _dragObject = new GameObject("Ray Lever");
-                _dragObject.transform.parent = _selectedDragObject;
+                _mouseRef = new GameObject("Ray Joint");
+                _mouseRef.transform.parent = _selectedDragObject;
             }
 
+            //creates a raycast from screen center to mouse position in world space
+            //sets position of mouse ref game object to wherever the raycast collides with an object
             Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
-            _dragObject.transform.position = ray.GetPoint(Vector3.Distance(_selectedDragObject.position, transform.position));
-            _dragObject.transform.rotation = _selectedDragObject.rotation;
+            _mouseRef.transform.position = ray.GetPoint(Vector3.Distance(_selectedDragObject.position, transform.position));
+            _mouseRef.transform.rotation = _selectedDragObject.rotation;
 
-            float delta = Mathf.Pow(Vector3.Distance(_dragObject.transform.position, _selectedDragObject.position), 3);
+            //refers to the configurable joint component on the knob
+            ConfigurableJoint joint = _selectedDragObject.GetComponent<ConfigurableJoint>();
 
-            //Applying velocity to lever motor
-            float speedMultiplier = 60000;
+            //while dragging, if the mouse position gets further away from the knob, the stronger the force and the faster it reaches its max angle
+            float delta = Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4);
+
             if (Mathf.Abs(_selectedDragObject.parent.forward.z) > 0.5f)
             {
-                if (_dragObject.transform.position.y > _selectedDragObject.position.y)
+                //if the joint rotates via y axis
+                if (joint.angularYMotion != ConfigurableJointMotion.Locked)
                 {
-                    motor.targetVelocity = delta * -speedMultiplier * Time.deltaTime;
+                    //sets target rotation to max angle limit
+                    joint.targetRotation = Quaternion.Euler(0, joint.angularYLimit.limit, 0);
+                    //rotates joint towards mouse position relative to knob position
+                    if (_mouseRef.transform.position.x > _selectedDragObject.position.x)
+                    {
+                        joint.targetAngularVelocity = new Vector3(0, delta * -_jointStrength * Time.deltaTime);
+                    }
+                    else
+                    {
+                        joint.targetAngularVelocity = new Vector3(0, delta * _jointStrength * Time.deltaTime);
+                    }
                 }
-                else
+                //if the joint rotates via x axis
+                if (joint.angularXMotion != ConfigurableJointMotion.Locked)
                 {
-                    motor.targetVelocity = delta * speedMultiplier * Time.deltaTime;
+                    joint.targetRotation = Quaternion.Euler(joint.highAngularXLimit.limit, 0, 0);
+                    if (_mouseRef.transform.position.y < _selectedDragObject.position.y)
+                    {
+                        joint.targetAngularVelocity = new Vector3(delta * -_jointStrength * Time.deltaTime, 0);
+                    }
+                    else
+                    {
+                        joint.targetAngularVelocity = new Vector3(delta * _jointStrength * Time.deltaTime, 0);
+                    }
                 }
             }
 
-            joint.motor = motor;
-
+            //once the player lets go of the mouse button, it returns joint values to normal, and destroys mouse ref GO
             if (Input.GetMouseButtonUp(0))
             {
                 _selectedDragObject = null;
-                motor.targetVelocity = 0;
-                joint.motor = motor;
-                Destroy(_dragObject);
+                joint.targetRotation = Quaternion.identity;
+                joint.targetAngularVelocity = Vector3.zero;
+                Destroy(_mouseRef);
             }
         }
     }
