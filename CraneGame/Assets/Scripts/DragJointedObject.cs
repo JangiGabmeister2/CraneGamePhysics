@@ -36,7 +36,7 @@ public class DragJointedObject : MonoBehaviour
 
             //creates a raycast from screen center to mouse position in world space
             //sets position of mouse ref game object to wherever the raycast collides with an object
-            Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _cam.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
             _mouseRef.transform.position = ray.GetPoint(Vector3.Distance(_selectedDragObject.position, transform.position));
             _mouseRef.transform.rotation = _selectedDragObject.rotation;
 

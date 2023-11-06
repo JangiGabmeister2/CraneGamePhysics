@@ -3,10 +3,11 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     [Header("Camera Look")]
-    public float xSensitivity;
-    public float ySensitivity;
+    [SerializeField] Vector2 _sensitivity = new Vector2(50, 50);
+    [SerializeField] Vector2 _viewClampX = new Vector2(-60, 60);
+    [SerializeField] Vector2 _viewClampY = new Vector2(135, 215);
 
-    public Transform orientation;
+    [SerializeField, Space(20)] Transform orientation;
 
     float xRotation;
     float yRotation;
@@ -18,19 +19,19 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
-        Cursor.visible = true;
         MoveCamera();
     }
 
     private void MoveCamera()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * xSensitivity;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * ySensitivity;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _sensitivity.x;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _sensitivity.y;
 
         yRotation += mouseX;
         xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, _viewClampX.x, _viewClampX.y);
+        yRotation = Mathf.Clamp(yRotation, _viewClampY.x, _viewClampY.y);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
