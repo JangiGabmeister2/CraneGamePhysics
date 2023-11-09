@@ -51,6 +51,11 @@ public class DragJointedObject : MonoBehaviour
                 //if the joint rotates via y axis
                 if (joint.angularYMotion != ConfigurableJointMotion.Locked)
                 {
+                    //sets the joint's spring to 0 - so not as to mess up dragging to one side.
+                    JointDrive jd = joint.angularYZDrive;
+                    jd.positionSpring = 0;
+                    joint.angularYZDrive = jd;
+
                     //sets target rotation to max angle limit
                     joint.targetRotation = Quaternion.Euler(0, joint.angularYLimit.limit, 0);
                     //rotates joint towards mouse position relative to knob position
@@ -66,6 +71,10 @@ public class DragJointedObject : MonoBehaviour
                 //if the joint rotates via x axis
                 if (joint.angularXMotion != ConfigurableJointMotion.Locked)
                 {
+                    JointDrive jd = joint.angularXDrive;
+                    jd.positionSpring = 0;
+                    joint.angularXDrive = jd;
+
                     joint.targetRotation = Quaternion.Euler(joint.highAngularXLimit.limit, 0, 0);
                     if (_mouseRef.transform.position.y < _selectedDragObject.position.y)
                     {
@@ -81,6 +90,19 @@ public class DragJointedObject : MonoBehaviour
             //once the player lets go of the mouse button, it returns joint values to normal, and destroys mouse ref GO
             if (Input.GetMouseButtonUp(0))
             {
+                //reverts the joint's spring so it automatically moves back to its original rotation
+                if (joint.angularXMotion != ConfigurableJointMotion.Locked)
+                {
+                    JointDrive jd = joint.angularXDrive;
+                    jd.positionSpring = 20;
+                    joint.angularXDrive = jd;
+                }
+                else if (joint.angularYMotion != ConfigurableJointMotion.Locked)
+                {
+                    JointDrive jd = joint.angularYZDrive;
+                    jd.positionSpring = 5;
+                    joint.angularYZDrive = jd;
+                }
                 _selectedDragObject = null;
                 joint.targetRotation = Quaternion.identity;
                 joint.targetAngularVelocity = Vector3.zero;
