@@ -1,15 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CraneController : MonoBehaviour
 {
-    public ConfigurableJoint crane, elevationLever, trainLever, rotationWheel;
+    [SerializeField] GameObject wheel;
+    [SerializeField] Vector3 wheelValues;
+    public float wheelStrength;
 
-    public int jointValues1, jointValues2, jointValues3;
+    [SerializeField, Space(20)] public GameObject elevatorLever;
+    [SerializeField] Vector3 elevationValues;
+    public float elevatorStrength;
+
+    [SerializeField, Space(20)] public GameObject trainLever;
+    [SerializeField] Vector3 trainValues;
+    public float trainStrength;
+
+    private ConfigurableJoint joint1 => wheel.GetComponent<ConfigurableJoint>();
+    private ConfigurableJoint joint2 => elevatorLever.GetComponent<ConfigurableJoint>();
+    private ConfigurableJoint joint3 => trainLever.GetComponent<ConfigurableJoint>();
+    private float wheelJointLimit => joint1.angularYLimit.limit;
+    private float elevatorJointLowLimit => joint2.lowAngularXLimit.limit;
+    private float elevatorJointHighLimit => joint2.highAngularXLimit.limit;
+    private float trainJointLowLimit => joint3.lowAngularXLimit.limit;
+    private float trainJointHighLimit => joint3.highAngularXLimit.limit;
 
     private void Update()
     {
-        jointValues3 = (int)(rotationWheel.transform.localRotation.y * 90);
+        //displays the connected joint's low and high angular limits via x and z axes respectively,
+        //and displays the joint's current angle between them via y axis.
+        wheelValues.x = 360 - wheelJointLimit;
+        wheelValues.y = Mathf.Abs(wheel.transform.localEulerAngles.y - 360);
+        wheelValues.z = wheelJointLimit;
+        //displays how close the y value is to the other axes percentage-wise.
+        if (wheelValues.y < 360 && wheelValues.y > (360 - wheelJointLimit))
+        {
+            wheelStrength = GetValueBasedOnCloseness(360, 360 - wheelJointLimit, wheelValues.y);
+        }
+        else if (wheelValues.y < wheelJointLimit && wheelValues.y > 0)
+        {
+            wheelStrength = GetValueBasedOnCloseness(0, wheelJointLimit, wheelValues.y);
+        }
+
+        elevationValues.x = 360 - elevatorJointLowLimit;
+        elevationValues.y = Mathf.Abs(elevatorLever.transform.localEulerAngles.x - 360);
+        elevationValues.z = 360 - elevatorJointHighLimit;
+        elevatorStrength = GetValueBasedOnCloseness(elevationValues.x, elevationValues.z, elevationValues.y);
+
+        trainValues.x = 360 - trainJointLowLimit;
+        trainValues.y = Mathf.Abs(trainLever.transform.localEulerAngles.x - 360);
+        trainValues.z = 360 - trainJointHighLimit;
+        trainStrength = GetValueBasedOnCloseness(trainValues.x, trainValues.z, trainValues.y);
+    }
+
+    private float GetValueBasedOnCloseness(float lowValue, float highValue, float valueToCompare, bool reverse = false)
+    {
+        if (!reverse)
+        {
+            //finds where the value stands between the low value and a high value
+            //returns that position as a float between 0 and 1, where 0 is low, and 1 is high.
+            float lerp = Mathf.InverseLerp(lowValue, highValue, valueToCompare);
+
+            //then calculates how close that float is from both high and low values
+            float result = Mathf.Lerp(0, 100, lerp);
+
+            //returning float can be implied as percentage
+            return result;
+        }
+        else
+        {
+            //basically switches the high and low values
+            float lerp = Mathf.InverseLerp(highValue, lowValue, valueToCompare);
+            float result = Mathf.Lerp(0, 100, lerp);
+            return result;
+        }
     }
 }
