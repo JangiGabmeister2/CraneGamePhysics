@@ -16,11 +16,17 @@ public class MoveCrane : MonoBehaviour
 
     private void Update()
     {
-        crane.targetAngularVelocity = new Vector3(0, rotationSpeed * WheelJointStrength, 0);
+        //rotation
+        crane.targetAngularVelocity = new Vector3(0, rotationSpeed * WheelJointStrength / 1000, 0);
 
+        //elevation
         crane.targetVelocity = new Vector3(0, -elevationSpeed * ElevatorJointStrength, 0);
 
-        trainGO.transform.localPosition += new Vector3(0, -trainMovementSpeed * TrainJointStrength, 0);
-        //Mathf.Clamp(trainGO.transform.position.y, -40, 40);
+        //train
+        trainGO.transform.localPosition += new Vector3(0, -trainMovementSpeed * TrainJointStrength / 50000, 0);
+        
+        Vector3 pos = trainGO.transform.localPosition;
+        pos.y = Mathf.Clamp(trainGO.transform.localPosition.y, -2.5f, 16.5f);
+        trainGO.transform.localPosition = pos;
     }
 }

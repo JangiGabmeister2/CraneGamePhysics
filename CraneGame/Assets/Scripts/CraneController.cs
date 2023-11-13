@@ -52,10 +52,17 @@ public class CraneController : MonoBehaviour
             elevatorStrength = -GetValueBasedOnCloseness(360, elevationValues.z, elevationValues.y);
         }
 
-        trainValues.x = 360 - trainJointLowLimit;
+        trainValues.x = -trainJointLowLimit; //45
         trainValues.y = Mathf.Abs(trainLever.transform.localEulerAngles.x - 360);
-        trainValues.z = 360 - trainJointHighLimit;
-        trainStrength = GetValueBasedOnCloseness(trainValues.x, trainValues.z, trainValues.y);
+        trainValues.z = 360 - trainJointHighLimit; //315
+        if (trainValues.y <= trainValues.x && trainValues.y >= 0)
+        {
+            trainStrength = GetValueBasedOnCloseness(0, trainValues.x, trainValues.y);
+        }
+        else if (trainValues.y >= trainValues.z && trainValues.y <= 360)
+        {
+            trainStrength = -GetValueBasedOnCloseness(360, trainValues.z, trainValues.y);
+        }
     }
 
     private float GetValueBasedOnCloseness(float lowValue, float highValue, float valueToCompare)
