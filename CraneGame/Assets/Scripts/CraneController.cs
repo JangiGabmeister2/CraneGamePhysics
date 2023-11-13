@@ -68,6 +68,6 @@ public class CraneController : MonoBehaviour
         float result = Mathf.Lerp(0, 100, lerp);
 
         //returning float can be implied as percentage
-        return result / 100;
+        return result;
     }
 }
