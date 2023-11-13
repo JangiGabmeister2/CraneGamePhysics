@@ -3,12 +3,16 @@ using UnityEngine;
 public class DragJointedObject : MonoBehaviour
 {
     [SerializeField] Camera _cam;
+
     //what the player will drag in the scene AKA the knob
     Transform _selectedDragObject;
+
     //a game object which is a reference to the mouse position relative to the knob
     GameObject _mouseRef;
+
     //grabbable game objects are within this layer
     [SerializeField] LayerMask _leverLayer;
+
     //the strength at which the player drags knobs
     [SerializeField] float _jointStrength;
 
@@ -37,14 +41,15 @@ public class DragJointedObject : MonoBehaviour
             //creates a raycast from screen center to mouse position in world space
             //sets position of mouse ref game object to wherever the raycast collides with an object
             Ray ray = _cam.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
-            _mouseRef.transform.position = ray.GetPoint(Vector3.Distance(_selectedDragObject.position, transform.position));
+            _mouseRef.transform.position =
+                ray.GetPoint(Vector3.Distance(_selectedDragObject.position, transform.position));
             _mouseRef.transform.rotation = _selectedDragObject.rotation;
 
             //refers to the configurable joint component on the knob
             ConfigurableJoint joint = _selectedDragObject.GetComponent<ConfigurableJoint>();
 
             //while dragging, if the mouse position gets further away from the knob, the stronger the force and the faster it reaches its max angle
-            float delta = Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4);
+            float delta = Mathf.Clamp(Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4),4,20);
 
             if (Mathf.Abs(_selectedDragObject.parent.forward.z) > 0.5f)
             {
@@ -68,6 +73,7 @@ public class DragJointedObject : MonoBehaviour
                         joint.targetAngularVelocity = new Vector3(0, delta * _jointStrength * Time.deltaTime);
                     }
                 }
+
                 //if the joint rotates via x axis
                 if (joint.angularXMotion != ConfigurableJointMotion.Locked)
                 {
@@ -93,9 +99,12 @@ public class DragJointedObject : MonoBehaviour
                 //reverts the joint's spring so it automatically moves back to its original rotation
                 if (joint.angularXMotion != ConfigurableJointMotion.Locked)
                 {
-                    JointDrive jd = joint.angularXDrive;
-                    jd.positionSpring = 20;
-                    joint.angularXDrive = jd;
+                    if (_selectedDragObject.tag != "Unrevert")
+                    {
+                        JointDrive jd = joint.angularXDrive;
+                        jd.positionSpring = 20;
+                        joint.angularXDrive = jd;
+                    }
                 }
                 else if (joint.angularYMotion != ConfigurableJointMotion.Locked)
                 {
@@ -103,6 +112,7 @@ public class DragJointedObject : MonoBehaviour
                     jd.positionSpring = 5;
                     joint.angularYZDrive = jd;
                 }
+
                 _selectedDragObject = null;
                 joint.targetRotation = Quaternion.identity;
                 joint.targetAngularVelocity = Vector3.zero;

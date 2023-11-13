@@ -52,29 +52,22 @@ public class CraneController : MonoBehaviour
             elevatorStrength = -GetValueBasedOnCloseness(360, elevationValues.z, elevationValues.y);
         }
 
-        trainValues.x = -trainJointLowLimit; //45
+        trainValues.x = 360 - trainJointLowLimit;
         trainValues.y = Mathf.Abs(trainLever.transform.localEulerAngles.x - 360);
-        trainValues.z = 360 - trainJointHighLimit; //315
-        if (trainValues.y <= trainValues.x && trainValues.y >= 0)
-        {
-            trainStrength = GetValueBasedOnCloseness(0, trainValues.x, trainValues.y);
-        }
-        else if (trainValues.y >= trainValues.z && trainValues.y <= 360)
-        {
-            trainStrength = -GetValueBasedOnCloseness(360, trainValues.z, trainValues.y);
-        }
+        trainValues.z = 360 - trainJointHighLimit;
+        trainStrength = GetValueBasedOnCloseness(trainValues.x, trainValues.z, trainValues.y);
     }
 
-    private int GetValueBasedOnCloseness(float lowValue, float highValue, float valueToCompare)
+    private float GetValueBasedOnCloseness(float lowValue, float highValue, float valueToCompare)
     {
         //finds where the value stands between the low value and a high value
         //returns that position as a float between 0 and 1, where 0 is low, and 1 is high.
         float lerp = Mathf.InverseLerp(lowValue, highValue, valueToCompare);
 
         //then calculates how close that float is from both high and low values
-        int result = (int)Mathf.Lerp(0, 100, lerp);
+        float result = Mathf.Lerp(0, 100, lerp);
 
         //returning float can be implied as percentage
-        return result;
+        return result / 100;
     }
 }

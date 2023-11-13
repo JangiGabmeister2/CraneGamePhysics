@@ -13508,7 +13508,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23374
+  m_Name: pb_Mesh32600
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14184,11 +14184,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -45
+    limit: 5
     bounciness: 1
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 45
+    limit: 85
     bounciness: 1
     contactDistance: 0
   m_AngularYZLimitSpring:
