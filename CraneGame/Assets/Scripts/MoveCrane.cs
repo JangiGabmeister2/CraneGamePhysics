@@ -26,7 +26,7 @@ public class MoveCrane : MonoBehaviour
         trainGO.transform.localPosition += new Vector3(0, -trainMovementSpeed * TrainJointStrength / 50000, 0);
         
         Vector3 pos = trainGO.transform.localPosition;
-        pos.y = Mathf.Clamp(trainGO.transform.localPosition.y, -2.5f, 16.5f);
+        pos.y = Mathf.Clamp(trainGO.transform.localPosition.y, -0.5f, 16.5f);
         trainGO.transform.localPosition = pos;
     }
 }

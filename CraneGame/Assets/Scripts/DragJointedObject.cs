@@ -49,7 +49,9 @@ public class DragJointedObject : MonoBehaviour
             ConfigurableJoint joint = _selectedDragObject.GetComponent<ConfigurableJoint>();
 
             //while dragging, if the mouse position gets further away from the knob, the stronger the force and the faster it reaches its max angle
-            float delta = Mathf.Clamp(Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4),4,20);
+            float delta =
+                Mathf.Clamp(Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4),
+                    4, 20);
 
             if (Mathf.Abs(_selectedDragObject.parent.forward.z) > 0.5f)
             {
@@ -64,7 +66,7 @@ public class DragJointedObject : MonoBehaviour
                     //sets target rotation to max angle limit
                     joint.targetRotation = Quaternion.Euler(0, joint.angularYLimit.limit, 0);
                     //rotates joint towards mouse position relative to knob position
-                    if (_mouseRef.transform.position.x > _selectedDragObject.position.x)
+                    if (_mouseRef.transform.position.x > _selectedDragObject.localPosition.x)
                     {
                         joint.targetAngularVelocity = new Vector3(0, delta * -_jointStrength * Time.deltaTime);
                     }
@@ -99,12 +101,9 @@ public class DragJointedObject : MonoBehaviour
                 //reverts the joint's spring so it automatically moves back to its original rotation
                 if (joint.angularXMotion != ConfigurableJointMotion.Locked)
                 {
-                    if (_selectedDragObject.tag != "Unrevert")
-                    {
-                        JointDrive jd = joint.angularXDrive;
-                        jd.positionSpring = 20;
-                        joint.angularXDrive = jd;
-                    }
+                    JointDrive jd = joint.angularXDrive;
+                    jd.positionSpring = 20;
+                    joint.angularXDrive = jd;
                 }
                 else if (joint.angularYMotion != ConfigurableJointMotion.Locked)
                 {
