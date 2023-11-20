@@ -49,9 +49,9 @@ public class DragJointedObject : MonoBehaviour
             ConfigurableJoint joint = _selectedDragObject.GetComponent<ConfigurableJoint>();
 
             //while dragging, if the mouse position gets further away from the knob, the stronger the force and the faster it reaches its max angle
-            float delta =
-                Mathf.Clamp(Mathf.Pow(Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position), 4),
-                    4, 10);
+            float distance = Vector3.Distance(_mouseRef.transform.position, _selectedDragObject.position);
+            float power = Mathf.Pow(distance, 4);
+            float delta = Mathf.Clamp(power, 4, 15);
 
             if (Mathf.Abs(_selectedDragObject.parent.forward.z) > 0.5f)
             {
