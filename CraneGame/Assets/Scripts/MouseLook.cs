@@ -7,8 +7,6 @@ public class MouseLook : MonoBehaviour
     [SerializeField] Vector2 _viewClampX = new Vector2(-60, 60);
     [SerializeField] Vector2 _viewClampY = new Vector2(135, 215);
 
-    [SerializeField, Space(20)] Transform orientation;
-
     float xRotation;
     float yRotation;
 
@@ -34,6 +32,5 @@ public class MouseLook : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, _viewClampY.x, _viewClampY.y);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

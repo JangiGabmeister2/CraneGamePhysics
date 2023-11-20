@@ -10,7 +10,7 @@ public class DragJointedObject : MonoBehaviour
     //a game object which is a reference to the mouse position relative to the knob
     GameObject _mouseRef;
 
-    //grabbable game objects are within this layer
+    //draggable game objects are within this layer
     [SerializeField] LayerMask _leverLayer;
 
     //the strength at which the player drags knobs
@@ -34,7 +34,7 @@ public class DragJointedObject : MonoBehaviour
         {
             if (_mouseRef == null)
             {
-                _mouseRef = new GameObject("Ray Joint");
+                _mouseRef = new GameObject("MouseReference");
                 _mouseRef.transform.parent = _selectedDragObject;
             }
 
@@ -66,7 +66,7 @@ public class DragJointedObject : MonoBehaviour
                     //sets target rotation to max angle limit
                     joint.targetRotation = Quaternion.Euler(0, joint.angularYLimit.limit, 0);
                     //rotates joint towards mouse position relative to knob position
-                    if (_mouseRef.transform.position.x > _selectedDragObject.localPosition.x)
+                    if (_mouseRef.transform.position.x > _selectedDragObject.position.x)
                     {
                         joint.targetAngularVelocity = new Vector3(0, delta * -_jointStrength * Time.deltaTime);
                     }
