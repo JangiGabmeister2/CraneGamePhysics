@@ -28,24 +28,20 @@ public class ChainLink : MonoBehaviour
     {
         foreach (Rigidbody child in rb_links)
         {
-            Rigidbody parent = rb_parent;
-
-            child.mass = parent.mass;
-            child.drag = parent.drag;
-            child.useGravity = parent.useGravity;
-            child.interpolation = parent.interpolation;
-            child.collisionDetectionMode = parent.collisionDetectionMode;
+            child.mass = rb_parent.mass;
+            child.drag = rb_parent.drag;
+            child.useGravity = rb_parent.useGravity;
+            child.interpolation = rb_parent.interpolation;
+            child.collisionDetectionMode = rb_parent.collisionDetectionMode;
         }
 
         foreach (HingeJoint child in hj_links)
         {
-            HingeJoint parent = hj_parent;
-
-            child.useSpring = parent.useSpring;
+            child.useSpring = hj_parent.useSpring;
             
             //not confusing at all
             JointSpring spring = child.spring;
-            spring.spring = parent.spring.spring;
+            spring.spring = hj_parent.spring.spring;
             child.spring = spring;
         }
     }

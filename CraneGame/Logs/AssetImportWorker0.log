@@ -1309,3 +1309,166 @@ Received Import Request.
   path: Assets/Scenes/DestroyCity.unity
   artifactKey: Guid(d12e712cb8f954e41b3c862b519bf859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scenes/DestroyCity.unity using Guid(d12e712cb8f954e41b3c862b519bf859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0aed5c326698779e191f46ea9f2e76a') in 0.014439 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007154 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GitHub\CraneGamePhysics\CraneGame\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GitHub\CraneGamePhysics\CraneGame\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 1.12 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.011 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2013ms)
+		BeginReloadAssembly (451ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (19ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (144ms)
+		EndReloadAssembly (1375ms)
+			LoadAssemblies (220ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (492ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (73ms)
+			SetupLoadedEditorAssemblies (549ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (55ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (119ms)
+				ProcessInitializeOnLoadAttributes (318ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (22ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 229.23 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3455 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 16 unused Assets / (86.2 KB). Loaded Objects now: 4010.
+Memory consumption went from 127.4 MB to 127.4 MB.
+Total: 5.630000 ms (FindLiveObjects: 0.353600 ms CreateObjectMapping: 0.193400 ms MarkObjects: 4.845500 ms  DeleteObjects: 0.236400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1655.844899 seconds.
+  path: Assets/ProBuilder Data/Default Color Palette.asset
+  artifactKey: Guid(ff574ffe2100ec840bf5d942814dc4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ProBuilder Data/Default Color Palette.asset using Guid(ff574ffe2100ec840bf5d942814dc4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2aa570d527de9422d085c9a971704ad4') in 0.119117 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.954877 seconds.
+  path: Assets/Materials/CraneLeft.mat
+  artifactKey: Guid(88587869b110323409377ad634ce1ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/CraneLeft.mat using Guid(88587869b110323409377ad634ce1ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93b9a358db43eb215a1ff42d71ef791a') in 0.554261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Materials/TrainCam.mat
+  artifactKey: Guid(af27d67184ee3d443a36f390444a0148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/TrainCam.mat using Guid(af27d67184ee3d443a36f390444a0148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '672f5a419af73136a68355286c5c0f29') in 0.029673 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 57.566868 seconds.
+  path: Packages/com.dgreenheck.openfracture
+  artifactKey: Guid(7ad62dec54f1309aaed7e4d8e80fa0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture using Guid(7ad62dec54f1309aaed7e4d8e80fa0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23230b6133d6f368a946abb950cd6cd9') in 0.013169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.146644 seconds.
+  path: Packages/com.dgreenheck.openfracture/package.json
+  artifactKey: Guid(35e171a6fcd523940a345347887e93e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/package.json using Guid(35e171a6fcd523940a345347887e93e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.191211 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/package.json in SourceAssetDB has modification time of '2023-11-23T06:30:34.9907542Z' while content on disk has modification time of '2023-11-23T06:31:09.339997Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/package.json in SourceAssetDB has modification time of '2023-11-23T06:30:34.9907542Z' while content on disk has modification time of '2023-11-23T06:31:09.339997Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.372344 seconds.
+  path: Packages/com.dgreenheck.openfracture/Samples
+  artifactKey: Guid(66091006bfa11744e9178a45b0af0c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Samples using Guid(66091006bfa11744e9178a45b0af0c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000391 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/samples.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.7820405Z' while content on disk has modification time of '2023-11-23T06:31:09.1119048Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/samples.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.7820405Z' while content on disk has modification time of '2023-11-23T06:31:09.1119048Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.180836 seconds.
+  path: Packages/com.dgreenheck.openfracture/Runtime
+  artifactKey: Guid(b1afb8d087d264245b3cdb9b3dba277a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Runtime using Guid(b1afb8d087d264245b3cdb9b3dba277a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000762 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/runtime.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.460132Z' while content on disk has modification time of '2023-11-23T06:31:08.8605036Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/runtime.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.460132Z' while content on disk has modification time of '2023-11-23T06:31:08.8605036Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.532115 seconds.
+  path: Packages/com.dgreenheck.openfracture/Tests
+  artifactKey: Guid(da310988c435d554ca8a36b1d907312d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Tests using Guid(da310988c435d554ca8a36b1d907312d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000466 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/tests.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.9757966Z' while content on disk has modification time of '2023-11-23T06:31:09.3270305Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/tests.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.9757966Z' while content on disk has modification time of '2023-11-23T06:31:09.3270305Z'
+========================================================================
+Received Import Request.
+  Time since last request: 1.539019 seconds.
+  path: Packages/com.dgreenheck.openfracture/Tests/Runtime
+  artifactKey: Guid(5b8da881646f8c04ab2fe5c6cd1bfc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Tests/Runtime using Guid(5b8da881646f8c04ab2fe5c6cd1bfc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000673 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/tests/runtime.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.9767943Z' while content on disk has modification time of '2023-11-23T06:31:09.3280275Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/tests/runtime.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.9767943Z' while content on disk has modification time of '2023-11-23T06:31:09.3280275Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.107122 seconds.
+  path: Packages/com.dgreenheck.openfracture/Tests/Runtime/OpenFracture.Tests.asmdef
+  artifactKey: Guid(890a6d949f4fba54a807db272232034c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Tests/Runtime/OpenFracture.Tests.asmdef using Guid(890a6d949f4fba54a807db272232034c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.002967 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/tests/runtime/openfracture.tests.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.9847696Z' while content on disk has modification time of '2023-11-23T06:31:09.334013Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/tests/runtime/openfracture.tests.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.9847696Z' while content on disk has modification time of '2023-11-23T06:31:09.334013Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.725879 seconds.
+  path: Packages/com.dgreenheck.openfracture/Editor
+  artifactKey: Guid(578d5f65dc129b44f81bd8b0697a0f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Editor using Guid(578d5f65dc129b44f81bd8b0697a0f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000700 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/editor.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.4455457Z' while content on disk has modification time of '2023-11-23T06:31:08.8499382Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/editor.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.4455457Z' while content on disk has modification time of '2023-11-23T06:31:08.8499382Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.080255 seconds.
+  path: Packages/com.dgreenheck.openfracture/Editor/OpenFracture.Editor.asmdef
+  artifactKey: Guid(948c819856827144ba8a7bba3f8946df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Editor/OpenFracture.Editor.asmdef using Guid(948c819856827144ba8a7bba3f8946df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000513 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/editor/openfracture.editor.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.4504857Z' while content on disk has modification time of '2023-11-23T06:31:08.8539262Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/editor/openfracture.editor.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.4504857Z' while content on disk has modification time of '2023-11-23T06:31:08.8539262Z'
+========================================================================
+Received Import Request.
+  Time since last request: 2.715036 seconds.
+  path: Packages/com.dgreenheck.openfracture/Runtime/Scripts
+  artifactKey: Guid(feade0b19650b2c48aa625e56b2f9b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Runtime/Scripts using Guid(feade0b19650b2c48aa625e56b2f9b8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000535 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.5245081Z' while content on disk has modification time of '2023-11-23T06:31:08.9298581Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts.meta in SourceAssetDB has modification time of '2023-11-23T06:30:34.5245081Z' while content on disk has modification time of '2023-11-23T06:31:08.9298581Z'
+========================================================================
+Received Import Request.
+  Time since last request: 0.079647 seconds.
+  path: Packages/com.dgreenheck.openfracture/Runtime/Scripts/OpenFracture.Runtime.asmdef
+  artifactKey: Guid(7b1a8d9f4355a214f9a95471fa510c86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Runtime/Scripts/OpenFracture.Runtime.asmdef using Guid(7b1a8d9f4355a214f9a95471fa510c86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000714 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts/openfracture.runtime.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.5391075Z' while content on disk has modification time of '2023-11-23T06:31:08.9498052Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts/openfracture.runtime.asmdef in SourceAssetDB has modification time of '2023-11-23T06:30:34.5391075Z' while content on disk has modification time of '2023-11-23T06:31:08.9498052Z'
+========================================================================
+Received Import Request.
+  Time since last request: 4.322116 seconds.
+  path: Packages/com.dgreenheck.openfracture/Runtime/Scripts/Fracture.cs
+  artifactKey: Guid(91fc9178a0b0c3d4bb8b6d91b16d9893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.dgreenheck.openfracture/Runtime/Scripts/Fracture.cs using Guid(91fc9178a0b0c3d4bb8b6d91b16d9893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000364 seconds  code(4) message(Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts/fracture.cs in SourceAssetDB has modification time of '2023-11-23T06:30:34.5264873Z' while content on disk has modification time of '2023-11-23T06:31:08.9318521Z')
+  ERROR: Build asset version error: packages/com.dgreenheck.openfracture/runtime/scripts/fracture.cs in SourceAssetDB has modification time of '2023-11-23T06:30:34.5264873Z' while content on disk has modification time of '2023-11-23T06:31:08.9318521Z'
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

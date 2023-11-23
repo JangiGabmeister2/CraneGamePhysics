@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class CraneController : MonoBehaviour
 {
-    [SerializeField] GameObject wheel;
-    [SerializeField] Vector3 wheelValues;
-    public float wheelStrength;
+    [SerializeField, Tooltip("Wheel knob")] GameObject wheel;
+    [SerializeField, Tooltip("X = Down angle\nY = Current angle\nZ = Up angle")] Vector3 wheelValues;
+    [Tooltip("Distance of current angle to max angle as a percentage.")] public float wheelStrength;
 
-    [SerializeField, Space(20)] public GameObject elevatorLever;
-    [SerializeField] Vector3 elevationValues;
-    public float elevatorStrength;
+    [SerializeField, Space(20), Tooltip("Elevator lever knob")] public GameObject elevatorLever;
+    [SerializeField, Tooltip("X = Down angle\nY = Current angle\nZ = Up angle")] Vector3 elevationValues;
+    [Tooltip("Distance of current angle to max angle as a percentage.")] public float elevatorStrength;
 
-    [SerializeField, Space(20)] public GameObject trainLever;
-    [SerializeField] Vector3 trainValues;
-    public float trainStrength;
+    [SerializeField, Space(20), Tooltip("Train Lever knob")] public GameObject trainLever;
+    [SerializeField, Tooltip("X = Down angle\nY = Current angle\nZ = Up angle")] Vector3 trainValues;
+    [Tooltip("Distance of current angle to max angle as a percentage.")] public float trainStrength;
 
     private ConfigurableJoint joint1 => wheel.GetComponent<ConfigurableJoint>();
     private ConfigurableJoint joint2 => elevatorLever.GetComponent<ConfigurableJoint>();
