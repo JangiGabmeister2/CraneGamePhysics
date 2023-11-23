@@ -14,7 +14,7 @@ public class DragJointedObject : MonoBehaviour
     [SerializeField] LayerMask _leverLayer;
 
     //the strength at which the player drags knobs
-    [SerializeField] float _jointStrength;
+    public float jointStrength;
 
     private void Update()
     {
@@ -68,11 +68,11 @@ public class DragJointedObject : MonoBehaviour
                     //rotates joint towards mouse position relative to knob position
                     if (_mouseRef.transform.position.x > _selectedDragObject.position.x)
                     {
-                        joint.targetAngularVelocity = new Vector3(0, delta * -_jointStrength * Time.deltaTime);
+                        joint.targetAngularVelocity = new Vector3(0, delta * -jointStrength * Time.deltaTime);
                     }
                     else
                     {
-                        joint.targetAngularVelocity = new Vector3(0, delta * _jointStrength * Time.deltaTime);
+                        joint.targetAngularVelocity = new Vector3(0, delta * jointStrength * Time.deltaTime);
                     }
                 }
 
@@ -86,11 +86,11 @@ public class DragJointedObject : MonoBehaviour
                     joint.targetRotation = Quaternion.Euler(joint.highAngularXLimit.limit, 0, 0);
                     if (_mouseRef.transform.position.y < _selectedDragObject.position.y)
                     {
-                        joint.targetAngularVelocity = new Vector3(delta * -_jointStrength * Time.deltaTime, 0);
+                        joint.targetAngularVelocity = new Vector3(delta * -jointStrength * Time.deltaTime, 0);
                     }
                     else
                     {
-                        joint.targetAngularVelocity = new Vector3(delta * _jointStrength * Time.deltaTime, 0);
+                        joint.targetAngularVelocity = new Vector3(delta * jointStrength * Time.deltaTime, 0);
                     }
                 }
             }

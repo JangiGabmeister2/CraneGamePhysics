@@ -3,7 +3,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     [Header("Camera Look")]
-    [SerializeField] Vector2 _sensitivity = new Vector2(50, 50);
+    public Vector2 sensitivity = new Vector2(50, 50);
     [SerializeField] Vector2 _viewClampX = new Vector2(-60, 60);
     [SerializeField] Vector2 _viewClampY = new Vector2(135, 215);
 
@@ -22,8 +22,8 @@ public class MouseLook : MonoBehaviour
 
     private void MoveCamera()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _sensitivity.x;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _sensitivity.y;
+        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity.x * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity.y * Time.deltaTime;
 
         yRotation += mouseX;
         xRotation -= mouseY;
