@@ -10,14 +10,19 @@ public class MouseLook : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    Camera cam;
+
     private void Start()
     {
+        cam = GetComponent<Camera>();
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         MoveCamera();
+        ZoomCamera();
     }
 
     private void MoveCamera()
@@ -32,5 +37,31 @@ public class MouseLook : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, _viewClampY.x, _viewClampY.y);
 
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
+
+    private void ZoomCamera()
+    {
+        float fov = cam.fieldOfView;
+
+        if (Input.mouseScrollDelta.normalized.y > 0)
+        {
+            fov -= 5;
+
+            if (fov < 20)
+            {
+                fov = 20;
+            }
+        }
+        else if (Input.mouseScrollDelta.normalized.y < 0)
+        {
+            fov += 5;
+
+            if (fov > 150)
+            {
+                fov = 150;
+            }
+        }
+
+        cam.fieldOfView = fov;
     }
 }
