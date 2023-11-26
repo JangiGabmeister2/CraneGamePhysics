@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DestroyCity.unity
+    guid: 62c9bc3a66ef70842a03785e8eec9652
+  - enabled: 1
+    path: Assets/Scenes/ControlsTest BehindCrane.unity
+    guid: c273aabc515be08498c831c1358d2f6b
   m_configObjects: {}
