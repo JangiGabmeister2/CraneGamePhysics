@@ -10,14 +10,7 @@ public class MouseLook : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    Camera cam;
-
-    private void Start()
-    {
-        cam = GetComponent<Camera>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    Camera cam => GetComponent<Camera>();
 
     private void Update()
     {
@@ -27,6 +20,9 @@ public class MouseLook : MonoBehaviour
 
     private void MoveCamera()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
         float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity.x * Time.deltaTime;
         float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity.y * Time.deltaTime;
 
