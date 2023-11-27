@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour
 {
+    private void Update()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
@@ -15,7 +20,7 @@ public class MenuHandler : MonoBehaviour
         Application.Quit();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #endif
     }
 }
