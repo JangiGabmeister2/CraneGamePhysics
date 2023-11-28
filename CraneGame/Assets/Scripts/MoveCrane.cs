@@ -20,10 +20,12 @@ public class MoveCrane : MonoBehaviour
         crane.targetVelocity = new Vector3(0, -elevationSpeed * ElevatorJointStrength, 0);
 
         //train
-        trainGO.transform.localPosition += new Vector3(0, -trainMovementSpeed * TrainJointStrength / 50000, 0);
+        var localPosition = trainGO.transform.localPosition;
+        localPosition += new Vector3(0, -trainMovementSpeed * TrainJointStrength / 50000, 0);
         
-        Vector3 pos = trainGO.transform.localPosition;
-        pos.y = Mathf.Clamp(trainGO.transform.localPosition.y, -0.5f, 16.5f);
-        trainGO.transform.localPosition = pos;
+        Vector3 pos = localPosition;
+        pos.y = Mathf.Clamp(localPosition.y, -0.5f, 16.5f);
+        localPosition = pos;
+        trainGO.transform.localPosition = localPosition;
     }
 }

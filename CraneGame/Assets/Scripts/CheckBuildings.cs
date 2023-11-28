@@ -1,35 +1,32 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CheckBuildings : MonoBehaviour
 {
     [SerializeField] private int _buildingCount = 16;
-
-    public UnityEvent onCompleteDestruction;
+    [SerializeField] private Text _buildingGoal;
 
     public void DestroyedBuilding()
     {
         _buildingCount -= 1;
+
+        _buildingGoal.text = $"Buildings Left: {_buildingCount}";
     }
 
     private void Start()
     {
-        StartCoroutine(nameof(CheckForBuildings));
+        _buildingGoal.text = $"Buildings Left: {_buildingCount}";
     }
 
-    private IEnumerator CheckForBuildings()
+    private void Update()
     {
-        while (_buildingCount !<= 0)
+        if (_buildingCount == 0)
         {
-            yield return null;
-        }
-
-        if (_buildingCount <= 0)
-        {
-            yield return new WaitForSeconds(15f);
-            
-            onCompleteDestruction.Invoke();
+            SceneManager.LoadScene(0);
         }
     }
 }
