@@ -14,22 +14,22 @@ public class CraneController : MonoBehaviour
     [SerializeField, Tooltip("X = Down angle\nY = Current angle\nZ = Up angle")] Vector3 trainValues;
     [Tooltip("Distance of current angle to max angle as a percentage.")] public float trainStrength;
 
-    private ConfigurableJoint joint1 => wheel.GetComponent<ConfigurableJoint>();
-    private ConfigurableJoint joint2 => elevatorLever.GetComponent<ConfigurableJoint>();
-    private ConfigurableJoint joint3 => trainLever.GetComponent<ConfigurableJoint>();
-    private float wheelJointLimit => joint1.angularYLimit.limit;
-    private float elevatorJointLowLimit => joint2.lowAngularXLimit.limit;
-    private float elevatorJointHighLimit => joint2.highAngularXLimit.limit;
-    private float trainJointLowLimit => joint3.lowAngularXLimit.limit;
-    private float trainJointHighLimit => joint3.highAngularXLimit.limit;
+    private ConfigurableJoint Joint1 => wheel.GetComponent<ConfigurableJoint>();
+    private ConfigurableJoint Joint2 => elevatorLever.GetComponent<ConfigurableJoint>();
+    private ConfigurableJoint Joint3 => trainLever.GetComponent<ConfigurableJoint>();
+    private float WheelJointLimit => Joint1.angularYLimit.limit;
+    private float ElevatorJointLowLimit => Joint2.lowAngularXLimit.limit;
+    private float ElevatorJointHighLimit => Joint2.highAngularXLimit.limit;
+    private float TrainJointLowLimit => Joint3.lowAngularXLimit.limit;
+    private float TrainJointHighLimit => Joint3.highAngularXLimit.limit;
 
     private void Update()
     {
         //displays the connected joint's low and high angular limits via x and z axes respectively,
         //and displays the joint's current angle between them via y axis.
-        wheelValues.x = 360 - wheelJointLimit; //-145
+        wheelValues.x = 360 - WheelJointLimit; //-145
         wheelValues.y = Mathf.Abs(wheel.transform.localEulerAngles.y - 360);
-        wheelValues.z = wheelJointLimit; //145
+        wheelValues.z = WheelJointLimit; //145
         //displays how close the y value is to the other axes percentage-wise.
         if (wheelValues.y <= 360 && wheelValues.y >= wheelValues.x)
         {
@@ -40,9 +40,9 @@ public class CraneController : MonoBehaviour
             wheelStrength = -GetValueBasedOnCloseness(0, wheelValues.z, wheelValues.y);
         }
 
-        elevationValues.x = -elevatorJointLowLimit; //45
+        elevationValues.x = -ElevatorJointLowLimit; //45
         elevationValues.y = Mathf.Abs(elevatorLever.transform.localEulerAngles.x - 360);
-        elevationValues.z = 360 - elevatorJointHighLimit; //315
+        elevationValues.z = 360 - ElevatorJointHighLimit; //315
         if (elevationValues.y <= elevationValues.x && elevationValues.y >= 0)
         {
             elevatorStrength = GetValueBasedOnCloseness(0, elevationValues.x, elevationValues.y);
@@ -52,9 +52,9 @@ public class CraneController : MonoBehaviour
             elevatorStrength = -GetValueBasedOnCloseness(360, elevationValues.z, elevationValues.y);
         }
 
-        trainValues.x = -trainJointLowLimit; //45
+        trainValues.x = -TrainJointLowLimit; //45
         trainValues.y = Mathf.Abs(trainLever.transform.localEulerAngles.x - 360);
-        trainValues.z = 360 - trainJointHighLimit; //315
+        trainValues.z = 360 - TrainJointHighLimit; //315
         if (trainValues.y <= trainValues.x && trainValues.y >= 0)
         {
             trainStrength = GetValueBasedOnCloseness(0, trainValues.x, trainValues.y);
